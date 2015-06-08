@@ -110,15 +110,11 @@ sizes, pagination, etc.
 /* ===============================================================
 Pagination Styles
 ================================================================*/
-.swiper-container .page {
+.swiper-pagination-bullet {
 	/* Stylize pagination button: */
 
 }
-.swiper-container .page.active {
+.swiper-pagination-bullet-active {
 	/* Specific active button style: */
-
-}
-.swiper-container .page.visible {
-	/* Specific visible button style: */
 
 }
