@@ -162,7 +162,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
             bottom: 16px;
             opacity: 1;
         }
-        .swiper-container .swiper-pagination-switch{
+        .swiper-container .page{
             display: inline-block;
             width: 8px;
             height: 8px;
@@ -177,13 +177,13 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
             transform: scale(1);
             transition: all 0.2s ease-in-out;
         }
-        .swiper-container .swiper-pagination-switch:hover{
+        .swiper-container .page:hover{
             -webkit-transform: scale(1.5);
             transform: scale(1.5);
             background: transparent;
             border: 2px solid #fff;
         }
-        .swiper-container .swiper-pagination-switch.swiper-visible-switch.swiper-active-switch{
+        .swiper-container .page.active{
             -webkit-transform: scale(1.5);
             transform: scale(1.5);
             background: transparent;

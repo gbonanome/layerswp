@@ -128,9 +128,9 @@ if( !class_exists( 'Layers_Slider_Widget' ) ) {
 
 			// Apply slider arrow color
 			if( $this->check_and_return( $widget, 'slider_arrow_color' ) ) layers_inline_styles( '#' . $widget_id, 'color', array( 'selectors' => array( '.arrows a' ), 'color' => $this->check_and_return( $widget, 'slider_arrow_color' ) ) );
-			if( $this->check_and_return( $widget, 'slider_arrow_color' ) ) layers_inline_styles( '#' . $widget_id, 'border', array( 'selectors' => array( 'span.swiper-pagination-switch' ), 'border' => array( 'color' => $this->check_and_return( $widget, 'slider_arrow_color' ) ) ) );
-			if( $this->check_and_return( $widget, 'slider_arrow_color' ) ) layers_inline_styles( '#' . $widget_id, 'background', array( 'selectors' => array( 'span.swiper-pagination-switch' ), 'background' => array( 'color' => $this->check_and_return( $widget, 'slider_arrow_color' ) ) ) );
-			if( $this->check_and_return( $widget, 'slider_arrow_color' ) ) layers_inline_styles( '#' . $widget_id, 'background', array( 'selectors' => array( 'span.swiper-pagination-switch.swiper-active-switch' ), 'background' => array( 'color' => 'transparent !important' ) ) );
+			if( $this->check_and_return( $widget, 'slider_arrow_color' ) ) layers_inline_styles( '#' . $widget_id, 'border', array( 'selectors' => array( 'a.page' ), 'border' => array( 'color' => $this->check_and_return( $widget, 'slider_arrow_color' ) ) ) );
+			if( $this->check_and_return( $widget, 'slider_arrow_color' ) ) layers_inline_styles( '#' . $widget_id, 'background', array( 'selectors' => array( 'a.page' ), 'background' => array( 'color' => $this->check_and_return( $widget, 'slider_arrow_color' ) ) ) );
+			if( $this->check_and_return( $widget, 'slider_arrow_color' ) ) layers_inline_styles( '#' . $widget_id, 'background', array( 'selectors' => array( 'a.page.active' ), 'background' => array( 'color' => 'transparent !important' ) ) );
 
 
 			// Get slider height css
@@ -286,19 +286,15 @@ if( !class_exists( 'Layers_Slider_Widget' ) ) {
 		 	<script>
 				jQuery(function($){
 
-					var <?php echo $swiper_js_obj; ?> = $('#<?php echo $widget_id; ?>').swiper({
+					var <?php echo $swiper_js_obj; ?> = new Swiper('#<?php echo $widget_id; ?>',{
 						//Your options here:
-						mode:'horizontal',
-						<?php if( '' == $slider_height_css ) { ?>
-							calculateHeight: true,
-						<?php } ?>
+						direction:'horizontal',
 						<?php if( isset( $widget['show_slider_dots'] ) && ( !empty( $widget[ 'slides' ] ) && 1 < count( $widget[ 'slides' ] ) ) ) { ?>
 							pagination: '.<?php echo $this->get_field_id( 'pages' ); ?>',
 						<?php } ?>
 						paginationClickable: true,
-						watchActiveIndex: true
 						<?php if( 1 < count( $widget[ 'slides' ] ) ) { ?>
-							,loop: true
+							loop: true
 						<?php } ?>
 						<?php if( isset( $widget['autoplay_slides'] ) && isset( $widget['slide_time'] ) && is_numeric( $widget['slide_time'] ) ) {?>
 							, autoplay: <?php echo ($widget['slide_time']*1000); ?>
@@ -319,12 +315,12 @@ if( !class_exists( 'Layers_Slider_Widget' ) ) {
 						// "Hi Mom"
 						$that = $(this);
 
-						if( $that.hasClass( 'swiper-pagination-switch' ) ){ // Anchors
-							<?php echo $swiper_js_obj; ?>.swipeTo( $that.index() );
+						if( $that.hasClass( 'page' ) ){ // Anchors
+							<?php echo $swiper_js_obj; ?>.slideTo( $that.index() );
 						} else if( $that.hasClass( 'l-left-arrow' ) ){ // Previous
-							<?php echo $swiper_js_obj; ?>.swipePrev();
+							<?php echo $swiper_js_obj; ?>.slidePrev();
 						} else if( $that.hasClass( 'l-right-arrow' ) ){ // Next
-							<?php echo $swiper_js_obj; ?>.swipeNext();
+							<?php echo $swiper_js_obj; ?>.slideNext();
 						}
 
 						return false;
