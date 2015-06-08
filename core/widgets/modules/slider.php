@@ -128,9 +128,9 @@ if( !class_exists( 'Layers_Slider_Widget' ) ) {
 
 			// Apply slider arrow color
 			if( $this->check_and_return( $widget, 'slider_arrow_color' ) ) layers_inline_styles( '#' . $widget_id, 'color', array( 'selectors' => array( '.arrows a' ), 'color' => $this->check_and_return( $widget, 'slider_arrow_color' ) ) );
-			if( $this->check_and_return( $widget, 'slider_arrow_color' ) ) layers_inline_styles( '#' . $widget_id, 'border', array( 'selectors' => array( 'a.page' ), 'border' => array( 'color' => $this->check_and_return( $widget, 'slider_arrow_color' ) ) ) );
-			if( $this->check_and_return( $widget, 'slider_arrow_color' ) ) layers_inline_styles( '#' . $widget_id, 'background', array( 'selectors' => array( 'a.page' ), 'background' => array( 'color' => $this->check_and_return( $widget, 'slider_arrow_color' ) ) ) );
-			if( $this->check_and_return( $widget, 'slider_arrow_color' ) ) layers_inline_styles( '#' . $widget_id, 'background', array( 'selectors' => array( 'a.page.active' ), 'background' => array( 'color' => 'transparent !important' ) ) );
+			if( $this->check_and_return( $widget, 'slider_arrow_color' ) ) layers_inline_styles( '#' . $widget_id, 'border', array( 'selectors' => array( 'span.swiper-pagination-bullet' ), 'border' => array( 'color' => $this->check_and_return( $widget, 'slider_arrow_color' ) ) ) );
+			if( $this->check_and_return( $widget, 'slider_arrow_color' ) ) layers_inline_styles( '#' . $widget_id, 'background', array( 'selectors' => array( 'span.swiper-pagination-bullet' ), 'background' => array( 'color' => $this->check_and_return( $widget, 'slider_arrow_color' ) ) ) );
+			if( $this->check_and_return( $widget, 'slider_arrow_color' ) ) layers_inline_styles( '#' . $widget_id, 'background', array( 'selectors' => array( 'span.swiper-pagination-bullet.swiper-pagination-bullet-active' ), 'background' => array( 'color' => 'transparent !important' ) ) );
 
 
 			// Get slider height css
@@ -315,7 +315,7 @@ if( !class_exists( 'Layers_Slider_Widget' ) ) {
 						// "Hi Mom"
 						$that = $(this);
 
-						if( $that.hasClass( 'page' ) ){ // Anchors
+						if( $that.hasClass( 'swiper-pagination-bullet' ) ){ // Anchors
 							<?php echo $swiper_js_obj; ?>.slideTo( $that.index() );
 						} else if( $that.hasClass( 'l-left-arrow' ) ){ // Previous
 							<?php echo $swiper_js_obj; ?>.slidePrev();
